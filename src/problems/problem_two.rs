@@ -1,3 +1,4 @@
+
 pub fn solve(max_sequence_element: u32, mut n_minus_one: u32, mut n_minus_two:u32) -> Result<u32,&'static str> {
     let mut sum: u32 = 0;
     let mut current_sequence_value: u32;
