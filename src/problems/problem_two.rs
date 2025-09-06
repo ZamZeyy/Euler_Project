@@ -4,7 +4,7 @@ pub fn solve(max_sequence_element: u32, mut n_minus_one: u32, mut n_minus_two:u3
     let mut current_sequence_value: u32;
 
     if n_minus_one + n_minus_two > max_sequence_element { return Err("Max sequence is smaller then the product of a and b "); }
-    if n_minus_one + n_minus_two == 0 { return Err("cannot create a sequence when the first two elements equal zero "); }
+    if n_minus_one == 0 && n_minus_two == 0 { return Err("The First two elements of the sequance cannot be both zero "); }
 
     if n_minus_one % 2 == 0 {sum+= n_minus_one;}
     if n_minus_two % 2 == 0 {sum+= n_minus_two;}
