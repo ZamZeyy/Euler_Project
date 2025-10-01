@@ -1,61 +1,56 @@
+
 //find the largest prime factor of a given number
 
-pub fn solve(number_to_analyse: u64){
-
+pub fn solve(number_to_analyse: u64)
+{
+    use std::time::Instant;
+    let now = Instant::now();
     let mut prime_vectors: Vec<u64> = Vec::new();
-    let mut prime_vectors_in_number: Vec<u64> =  Vec::new();
+
+    let primes_in_num = sieve_of_eratosthenes(number_to_analyse);
  
-    for n in 1..number_to_analyse/2{
-
-        
-
-        let mut is_prime_product:bool = false;
-
-        // need a faster prime finding algorithm
-        for prime in prime_vectors.iter(){
-            if *prime != 1 && n % prime == 0 {
-                is_prime_product = true;
-                break;
-            }
-        }
-
-        if is_prime_product {
+    for n in primes_in_num{
+        if(number_to_analyse % n != 0){
             continue;
         }
-        
-        let mut is_not_prime: bool = false;
-        let mut multiples: Vec<u64> = Vec::new();
-        for i in 1.. n{
-            
-            if i % n == 0{
-                multiples.push(i);
-            }
-
-            if multiples.len() >= 2 {
-                is_not_prime = true;
-                break;
-            }
-        }
-        
-        if is_not_prime{
-            continue;
-        }
-        println!("{n}");
 
         prime_vectors.push(n);
 
-        if number_to_analyse % n == 0 {
+    }
+    
+    println!("{:?}", prime_vectors);
+    let elapsed = now.elapsed();
+    println!("Elapsed: {:.2?}", elapsed);
+}
 
-            println!("prime product : {n}");
-            prime_vectors_in_number.push(n);
+pub fn is_prime(number: u64) -> bool
+{
+    let sqrt_number: u64 = f64::sqrt(number as f64).floor() as u64;
+
+    for divisor in 2..=sqrt_number{
+        if number % divisor == 0{
+            return false;
+        }
+    }
+    return true;
+}
+
+pub fn sieve_of_eratosthenes(number: u64) -> Vec<u64>{
+
+    let sqrt_number: u64 = f64::sqrt(number as f64).floor() as u64;
+    let mut primes: Vec<u64> = Vec::new();
+    let mut possible_numbers: Vec<u64> = (2..sqrt_number).collect();  
+
+    for divisor in 2..sqrt_number{
+        if is_prime(divisor){
+            possible_numbers.retain_mut(|x: &mut u64| *x % divisor != 0);
+            let len = possible_numbers.len();
+            println!("{len} Available numbers");
+            primes.push(divisor);
         }
     }
 
-    if prime_vectors_in_number.len() == 0{
-            println!("{number_to_analyse} is a prime")
-    }
-    else{
-        
-        println!("{number_to_analyse} is a prime composite") 
-    }
+    println!("{:?}", primes);
+    return primes;
+
 }

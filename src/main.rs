@@ -9,7 +9,7 @@ fn main() {
     //     Err(e) => println!("{}", e)
     // };
 
-    let _problem_three = problems::problem_three::solve(600851475143);
+    let _problem_three = problems::problem_three::solve(600_851_475_143);
     
 }
-//600851475143
+//600_851_475_143
