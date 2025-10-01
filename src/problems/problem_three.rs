@@ -17,8 +17,15 @@ pub fn solve(number_to_analyse: u64)
         prime_vectors.push(n);
 
     }
+
+    if prime_vectors.len() == 0{
+        println!("{number_to_analyse} is a prime");
+
+    }
+    else{
+        println!("{:?}", prime_vectors);
+    }
     
-    println!("{:?}", prime_vectors);
     let elapsed = now.elapsed();
     println!("Elapsed: {:.2?}", elapsed);
 }
