@@ -4,6 +4,6 @@ mod problems;
 
 fn main() {
 
-    problems::problem_five::solve(30);
+    problems::problem_five::solve(75);
     
 }

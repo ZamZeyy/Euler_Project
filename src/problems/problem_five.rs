@@ -24,10 +24,10 @@ pub fn solve(max_multiple:u64){
         prime_powers.push(PrimePower { prime: prime, power: max_pow - 1 });
     }
 
-    let mut solution : u64 = 1;
+    let mut solution : u128 = 1;
 
     for prime_power in prime_powers{
-        solution *= prime_power.prime.pow(prime_power.power);
+        solution *= prime_power.prime.pow(prime_power.power) as u128;
     }
 
     println!("solution is {solution}");
