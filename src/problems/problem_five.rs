@@ -19,6 +19,8 @@ pub fn solve(max_multiple:u64){
             max_pow += 1;
             value = prime.pow(max_pow);
         }
+
+        // we do not want the max_pow that breaks out the loop since itll be over max_multiple
         prime_powers.push(PrimePower { prime: prime, power: max_pow - 1 });
     }
 
