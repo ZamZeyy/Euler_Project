@@ -32,6 +32,9 @@ pub fn solve(number_to_analyse: u64)
 
 pub fn is_prime(number: u64) -> bool
 {
+    if number ==1 {
+        return false;
+    }
     let sqrt_number: u64 = f64::sqrt(number as f64).floor() as u64;
 
     for divisor in 2..=sqrt_number{
