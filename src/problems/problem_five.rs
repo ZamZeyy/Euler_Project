@@ -10,7 +10,7 @@ pub fn solve(max_multiple:u64){
     let mut primes :Vec<u64> = (1..max_multiple).collect();
     primes.retain(|p| problem_three::is_prime(*p));
 
-    let mut x :Vec<PrimePower> = Vec::new();
+    let mut prime_powers :Vec<PrimePower> = Vec::new();
 
     for prime in primes{
         let mut max_pow: u32 = 0;
@@ -19,13 +19,13 @@ pub fn solve(max_multiple:u64){
             max_pow += 1;
             value = prime.pow(max_pow);
         }
-        x.push(PrimePower { prime: prime, power: max_pow - 1 });
+        prime_powers.push(PrimePower { prime: prime, power: max_pow - 1 });
     }
 
     let mut solution : u64 = 1;
 
-    for i in x{
-        solution *= i.prime.pow(i.power);
+    for prime_power in prime_powers{
+        solution *= prime_power.prime.pow(prime_power.power);
     }
 
     println!("solution is {solution}");
