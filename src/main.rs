@@ -1,9 +1,6 @@
-use std::num::NonZero;
-
 mod problems;
-
 fn main() {
 
-    problems::problem_five::solve(75);
+    problems::problems_one_to_ten::problem_five::solve(75);
     
 }
