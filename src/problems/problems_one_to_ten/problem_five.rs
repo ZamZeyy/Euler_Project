@@ -7,7 +7,7 @@ pub fn solve(max_multiple:u64){
     use std::time::Instant;
     let now = Instant::now();
 
-    let mut primes :Vec<u64> = (1..max_multiple).collect();
+    let mut primes :Vec<u64> = (1..=max_multiple).collect();
     primes.retain(|p| problem_three::is_prime(*p));
 
     let mut prime_powers :Vec<PrimePower> = Vec::new();
